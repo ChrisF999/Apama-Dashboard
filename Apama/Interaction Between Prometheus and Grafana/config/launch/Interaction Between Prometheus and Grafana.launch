@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.apama.text.launcher.monitorscriptApplication">
+<stringAttribute key="com.apama.launch.dirty" value="1547558238695"/>
 <stringAttribute key="com.apama.text.CONFIG_LOCATION" value="\Interaction Between Prometheus and Grafana\config\launch\Interaction Between Prometheus and Grafana.deploy"/>
 <intAttribute key="com.apama.text.CONFIG_VERSION" value="3"/>
 <stringAttribute key="com.apama.text.PROJECT_ATTR" value="Interaction Between Prometheus and Grafana"/>

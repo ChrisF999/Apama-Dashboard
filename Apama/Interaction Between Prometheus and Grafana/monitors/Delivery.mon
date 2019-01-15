@@ -1,0 +1,59 @@
+
+/** This monitor is responsible for ...  */
+package com.apamax.Delivery;
+using com.apama.correlator.Component;
+
+monitor DeliveryMonitor {
+	Component component;
+	integer MissedDel := 0;
+	integer TotalDel := 0;
+	integer HitDel := TotalDel - MissedDel;
+	integer Drive1 := 0;
+	integer Drive2 := 0;
+	integer Drive3 := 0;
+	integer Drive4 := 0;
+	action onload() {
+		
+		monitor.subscribe("Deliveries");
+		
+		component.setUserStatus("Num_Missed_Delivery",MissedDel.toString());
+		component.setUserStatus("Num_Total_Delivery", TotalDel.toString());
+		component.setUserStatus("Num_Total_Delivery", TotalDel.toString());
+		component.setUserStatus("Driver_4_Miss" , Drive4.toString());
+		component.setUserStatus("Driver_3_Miss" , Drive3.toString());
+		component.setUserStatus("Driver_2_Miss" , Drive2.toString());
+		component.setUserStatus("Driver_1_Miss" , Drive1.toString());
+		on all Delivery() as d {
+			TotalDel := TotalDel + 1;
+		    if( d.expectedTime < d.actualTime - 1.0) {
+		    	MissedDel := MissedDel + 1;
+		    } else {
+		    	HitDel := HitDel + 1;
+		    }
+		    //sequence<Driver> drivers := [Driver("Phil", 0), Driver("John", 0), Driver("Mark", 0), Driver("Bob", 0)];
+		    //integer id := integer.rand(4);
+		    //drivers[id].name
+		    if( d.DriverNum = 1 and d.expectedTime < d.actualTime - 1.0) {
+		    	Drive1 := Drive1 + 1;
+		    	
+		    } else if ( d.DriverNum = 2 and d.expectedTime < d.actualTime - 1.0) {
+		    	Drive2 := Drive2 + 1;
+		    	
+		    } else if ( d.DriverNum = 3 and d.expectedTime < d.actualTime - 1.0) {
+		    	Drive3 := Drive3 + 1;
+		  
+		    } else if ( d.DriverNum = 0 and d.expectedTime < d.actualTime - 1.0) {
+		    	Drive4 := Drive4 + 1;
+		    }
+		    component.setUserStatus("Driver_4_Miss" , Drive4.toString());
+		  	component.setUserStatus("Driver_3_Miss" , Drive3.toString());
+		    component.setUserStatus("Driver_2_Miss" , Drive2.toString());
+		    component.setUserStatus("Driver_1_Miss" , Drive1.toString());
+		    component.setUserStatus("Num_Missed_Delivery",MissedDel.toString());
+		    component.setUserStatus("Num_Hit_Delivery",HitDel.toString());
+			component.setUserStatus("Num_Total_Delivery", TotalDel.toString());
+		    
+		  }
+	
+	}
+}

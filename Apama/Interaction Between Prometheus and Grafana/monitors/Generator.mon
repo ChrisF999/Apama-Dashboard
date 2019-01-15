@@ -1,0 +1,16 @@
+event SendDelivery {}
+/** This monitor is responsible for ...  */
+monitor Generator {
+	action onload() {
+		
+		log "Loaded monitor Generator" at INFO;
+		
+		on all wait(1.0) {
+		
+			send Delivery(float.rand(100.0),float.rand(100.0 - 35.0),integer.rand(4)) to "Deliveries";
+			//send Delivery(float.rand(200.0),float.rand(400.0)) to "Deliveries";
+		}
+		
+		
+	}
+}

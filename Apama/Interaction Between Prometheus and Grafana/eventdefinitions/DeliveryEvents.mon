@@ -1,0 +1,12 @@
+
+/** This event is ...  */
+event Delivery {
+    float expectedTime;
+    float actualTime;
+    integer DriverNum;
+}
+event Driver {
+	string Name;
+	integer Lates;
+}
+
