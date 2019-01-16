@@ -26,24 +26,25 @@ monitor DeliveryMonitor {
 		component.setUserStatus("Num_Missed_Delivery",MissedDel.toString());
 		component.setUserStatus("Num_Total_Delivery", TotalDel.toString());
 		component.setUserStatus("Num_Hit_Delivery", TotalDel.toString());
-		component.setUserStatus("Driver_4_Miss" , drivers[3].Lates.toString());
-		component.setUserStatus("Driver_3_Miss" , drivers[2].Lates.toString());
-		component.setUserStatus("Driver_2_Miss" , drivers[1].Lates.toString());
-		component.setUserStatus("Driver_1_Miss" , drivers[0].Lates.toString());
-		
+		while(i < 4 ) {
+	    	component.setUserStatus("Driver_" + (i+1).toString() + "_Miss", drivers[i].Lates.toString());
+	    	i := i + 1;
+	    }
 	 
 		on all Delivery() as d {
 			TotalDel := TotalDel + 1;
 		    if( d.expectedTime < d.actualTime - 1.0) {
 		    	MissedDel := MissedDel + 1;
+		    	integer id := integer.rand(4);
+			    drivers[id].Lates := drivers[integer.rand(4)].Lates + 1;
+			    integer idR := integer.rand(10);
+			    Routes[idR].rounteLates := Routes[idR].rounteLates + 1;
 		    } else {
 		    	HitDel := HitDel + 1;
 		    }
 		    
-		    integer id := integer.rand(4);
-		    drivers[id].Lates := drivers[integer.rand(4)].Lates + 1;
-		    integer idR := integer.rand(10);
-		    Routes[idR].rounteLates := Routes[idR].rounteLates + 1;
+		   
+		    
 		   // if( d.DriverNum = 1 and d.expectedTime < d.actualTime - 1.0) {
 		    //	Drive1 := Drive1 + 1;
 		    	
@@ -62,13 +63,18 @@ monitor DeliveryMonitor {
 		    	component.setUserStatus("Route_" + (i+1).toString() + "_Lates", Routes[i].rounteLates.toString());
 		    	i := i + 1;
 		    }
-		    
+		    i := 0;
+		    while(i < 4 ) {
+		    	component.setUserStatus("Driver_" + (i+1).toString() + "_Miss", drivers[i].Lates.toString());
+		    	i := i + 1;
+		    }
+		    	
 		    //component.setUserStatus("Expexted_Del_Time", d.expectedTime.toString());
 		    //component.setUserStatus("Actual_Del_Time", d.actualTime.toString());
-		    component.setUserStatus("Driver_4_Miss" , drivers[3].Lates.toString());
-			component.setUserStatus("Driver_3_Miss" , drivers[2].Lates.toString());
-			component.setUserStatus("Driver_2_Miss" , drivers[1].Lates.toString());
-			component.setUserStatus("Driver_1_Miss" , drivers[0].Lates.toString());
+		    //component.setUserStatus("Driver_4_Miss" , drivers[3].Lates.toString());
+			//component.setUserStatus("Driver_3_Miss" , drivers[2].Lates.toString());
+			//component.setUserStatus("Driver_2_Miss" , drivers[1].Lates.toString());
+			//component.setUserStatus("Driver_1_Miss" , drivers[0].Lates.toString());
 		    component.setUserStatus("Num_Missed_Delivery",MissedDel.toString());
 		    component.setUserStatus("Num_Hit_Delivery",HitDel.toString());
 			component.setUserStatus("Num_Total_Delivery", TotalDel.toString());

@@ -6,9 +6,12 @@ monitor Generator {
 		log "Loaded monitor Generator" at INFO;
 		
 		on all wait(1.0) {
-		
+		//integer i := 0;
+		//while( i < 2000000) {
+			//send Delivery(float.rand(100.0)) ,float.rand(100.0 - float.rand(50.0)) to "Deliveries";
+			//send Delivery(float.rand(100.0),float.rand(100.0)- float.rand(50.0)) to "Deliveries";
 			send Delivery(float.rand(100.0),float.rand(100.0 - float.rand(75.0))) to "Deliveries";
-			//send Delivery(float.rand(200.0),float.rand(400.0)) to "Deliveries";
+//		i := i + 1;
 		}
 		
 		
