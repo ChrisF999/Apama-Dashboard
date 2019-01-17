@@ -1,0 +1,77 @@
+version: "3.3"
+services:
+   grafana:
+      image: grafana:latest-with-plugins
+      ports:
+        - 3000
+      networks:
+        - prometheus
+      configs:
+        - source: grafana_config_prom
+          target: /etc/grafana/provisioning/datasources/prometheus.yaml
+        - source: grafana_config_dash
+          target: /etc/grafana/provisioning/dashboards/ApamaDeliveriesStats.yaml
+        - source: grafana_dash_apama
+          target: /etc/grafana/dashboards/ApamaDeliveriesStats.json
+        - source: grafana_dash_apama
+          target: /etc/grafana/dashboards/ApamaCorriatorStats.json
+   prometheus:
+      image: prom/prometheus
+      ports:
+        -  9090
+      networks:
+        - prometheus
+      configs:
+        - source: prom_config_apama
+          target: /etc/prometheus/prometheus.yml
+   apama:
+      image: store/softwareag/apama-correlator:10.3
+      ports: 
+        - 15903
+      networks:
+        - prometheus
+      command: ["correlator", "--config", "/apama_work"]
+      configs:
+        - source: apama_config
+          target: /apama_work/correlator.yaml
+        - source: apama_monitor
+          target: /apama_work/Delivery.mon
+        - source: apama_eventdefinition
+          target: /apama_work/DeliveryEvents.mon
+   sender:
+      image: store/softwareag/apama-correlator:10.3
+      ports: 
+        - 15903
+      networks:
+        - prometheus
+      command: ["correlator", "--config", "/apama_work"]
+      configs:
+        - source: apama_sender_config
+          target: /apama_work/sender.yaml
+        - source: apama_sender_monitor
+          target: /apama_work/Generator.mon
+        - source: apama_eventdefinition
+          target: /apama_work/DeliveryEvents.mon
+configs:
+  prom_config_apama:
+    file: ./prometheus/prometheus.yml
+  grafana_config_prom:
+    file: ./grafana-config/datasources/prometheus.yml
+  grafana_config_dash:
+    file: ./grafana-config/dashboards/ApamaDeliveriesStats.yml
+  grafana_dash_apama:
+    file: ./grafana-dashboards/ApamaDeliveriesStats.json
+  apama_config:
+    file: ./apama/correlator.yaml
+  apama_monitor:
+    file: ./apama/Delivery.mon
+  apama_eventdefinition:
+    file: ./apama/DeliveryEvents.mon
+  apama_sender_config:
+    file: ./sender/sender.yaml
+  apama_sender_monitor:
+    file: ./sender/Generator.mon
+  
+
+networks:
+   prometheus:

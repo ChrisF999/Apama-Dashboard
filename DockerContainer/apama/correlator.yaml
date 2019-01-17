@@ -1,0 +1,14 @@
+correlator:
+   initialization:
+      list:
+         - ${APAMA_HOME}/monitors/ManagementImpl.mon
+         - ${APAMA_HOME}/monitors/Management.mon
+         - ${PARENT_DIR}/DeliveryEvents.mon
+         - ${PARENT_DIR}/Delivery.mon
+         
+
+engineConnect:
+  - sourceHost: sender
+    sourcePort: 15903
+    channels: [ Deliveries ]
+

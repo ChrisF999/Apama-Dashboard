@@ -1,0 +1,17 @@
+event SendDelivery {}
+/** This monitor is responsible for the generation of events that will be uused by Delivery.mon  */
+monitor Generator {
+	action onload() {
+		
+		
+		on all wait(1.0) {
+		//integer i := 0;
+		//while( i < 2000000) {
+		//Creates the random events that used by deleivry.mon by randomsing valuse defined in DeliveryEvents.mon anyother commented code is debug code.	
+		send Delivery(float.rand(100.0),float.rand(100.0 - float.rand(75.0))) to "Deliveries";
+		//i := i + 1;
+		}
+		
+		
+	}
+}

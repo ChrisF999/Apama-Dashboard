@@ -1,0 +1,5 @@
+correlator:
+   initialization:
+      list:
+         - ${PARENT_DIR}/DeliveryEvents.mon
+         - ${PARENT_DIR}/Generator.mon
