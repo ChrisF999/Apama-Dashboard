@@ -32,7 +32,7 @@ monitor DeliveryMonitor {
 	    	component.setUserStatus("Driver_" + (i+1).toString() + "_Miss", drivers[i].Lates.toString());
 	    	i := i + 1;
 	    }
-	 //
+	 //Pushing the Metrics to prometheus to be scraped on lanch 
 		on all Delivery() as d {
 			TotalDel := TotalDel + 1;
 		    if( d.expectedTime < d.actualTime - 1.0) {
@@ -44,7 +44,7 @@ monitor DeliveryMonitor {
 		    } else {
 		    	HitDel := HitDel + 1;
 		    }
-		    
+		    //Prossceing of the events by increaing varaibles and sequences depending on wheather the deleiverys are late or not.
 		   
 		    
 		    
@@ -81,7 +81,7 @@ monitor DeliveryMonitor {
 		    component.setUserStatus("Num_Missed_Delivery",MissedDel.toString());
 		    component.setUserStatus("Num_Hit_Delivery",HitDel.toString());
 			component.setUserStatus("Num_Total_Delivery", TotalDel.toString());
-		    
+		    //Pushing updated metrics to prometheus
 		  }
 	
 	}
