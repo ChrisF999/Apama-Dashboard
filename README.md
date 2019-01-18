@@ -41,5 +41,5 @@ So in this exsaple the port is 30152.
 From there connect to your docker hoast with the port that you have got via either of the two methords.
 Then log in with the default GGrafana login details, User admin, password admin.  ->
 default Grafana login details:
-    * User: `admin`
-    * Password: `admin`
+* User: `admin`
+* Password: `admin`
