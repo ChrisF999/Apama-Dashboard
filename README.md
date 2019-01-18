@@ -5,7 +5,7 @@ This Project is a Demo of how Apama can intract with Prometheus and though Prome
 
 It uses base stats built into Apama and stats that were made whilst runing a simple apama application.
 
-## The docker continer will be enough for most people only use the the manual install if you have expiracne with Apama, Prometheus and Grafana.
+## The docker continer will be enough for most people only use the the manual install if you have experience  with Apama, Prometheus and Grafana.
 
 # DOCKER INSTALL INSTRUCTIONS
 
