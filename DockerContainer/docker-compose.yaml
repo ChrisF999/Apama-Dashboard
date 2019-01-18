@@ -13,8 +13,9 @@ services:
           target: /etc/grafana/provisioning/dashboards/ApamaDeliveriesStats.yaml
         - source: grafana_dash_apama
           target: /etc/grafana/dashboards/ApamaDeliveriesStats.json
-        - source: grafana_dash_apama
-          target: /etc/grafana/dashboards/ApamaCorriatorStats.json
+        - source: grafana_dash_apama1
+          target: /etc/grafana/dashboards/ApamaCorrilatorStats.json
+
    prometheus:
       image: prom/prometheus
       ports:
@@ -61,6 +62,8 @@ configs:
     file: ./grafana-config/dashboards/ApamaDeliveriesStats.yml
   grafana_dash_apama:
     file: ./grafana-dashboards/ApamaDeliveriesStats.json
+  grafana_dash_apama1:
+    file: ./grafana-dashboards/ApamaCorrilatorStats.json
   apama_config:
     file: ./apama/correlator.yaml
   apama_monitor:
@@ -71,7 +74,8 @@ configs:
     file: ./sender/sender.yaml
   apama_sender_monitor:
     file: ./sender/Generator.mon
-  
+  grafana_config_dash1:
+    file: ./grafana-config/dashboards/ApamaCorrilatorStats.yml
 
 networks:
    prometheus:
