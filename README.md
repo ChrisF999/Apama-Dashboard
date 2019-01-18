@@ -38,8 +38,7 @@ Then find the port from a window that looks like
 vxmqhzd97p3k        apamaProm_grafana      replicated          1/1                 grafana:latest-with-plugins              *:30152->3000/tcp
 ```
 So in this example the port is 30152.
-From there connect to your docker host with the port that you have got via either of the two methords.
-Then log in with the default Grafana login details, User admin, password admin. 
-Default Grafana login details:
+From there connect to your docker host with the port that you have got via either of the two methods.
+Then log in with the default Grafana login details :
 * User: `admin`
 * Password: `admin`
