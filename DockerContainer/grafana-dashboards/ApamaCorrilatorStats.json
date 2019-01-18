@@ -679,7 +679,7 @@
       "type": "dashlist"
     }
   ],
-  "refresh": "5s",
+  "refresh": "1s",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
@@ -687,7 +687,7 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
