@@ -881,7 +881,7 @@
           "refId": "A"
         }
       ],
-      "thresholds": "50,75,100",
+      "thresholds": "25,75,100",
       "timeFrom": null,
       "title": "On Time Delivery Percentage",
       "type": "singlestat",
