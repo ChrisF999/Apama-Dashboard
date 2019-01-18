@@ -48,18 +48,7 @@ monitor DeliveryMonitor {
 		   
 		    
 		    
-		   // if( d.DriverNum = 1 and d.expectedTime < d.actualTime - 1.0) {
-		    //	Drive1 := Drive1 + 1;
-		    	
-		    //} else if ( d.DriverNum = 2 and d.expectedTime < d.actualTime - 1.0) {
-		    	//Drive2 := Drive2 + 1;
-		    	
-		   // } else if ( d.DriverNum = 3 and d.expectedTime < d.actualTime - 1.0) {
-		    //	Drive3 := Drive3 + 1;
-		  
-		 //   } else if ( d.DriverNum = 0 and d.expectedTime < d.actualTime - 1.0) {
-		   // 	Drive4 := Drive4 + 1;
-		  //  }
+		   
 		     i := 0;
 		    
 		    while( i < 10 ) {
@@ -72,12 +61,7 @@ monitor DeliveryMonitor {
 		    	i := i + 1;
 		    }
 		    	
-		    //component.setUserStatus("Expexted_Del_Time", d.expectedTime.toString());
-		    //component.setUserStatus("Actual_Del_Time", d.actualTime.toString());
-		    //component.setUserStatus("Driver_4_Miss" , drivers[3].Lates.toString());
-			//component.setUserStatus("Driver_3_Miss" , drivers[2].Lates.toString());
-			//component.setUserStatus("Driver_2_Miss" , drivers[1].Lates.toString());
-			//component.setUserStatus("Driver_1_Miss" , drivers[0].Lates.toString());
+		    
 		    component.setUserStatus("Num_Missed_Delivery",MissedDel.toString());
 		    component.setUserStatus("Num_Hit_Delivery",HitDel.toString());
 			component.setUserStatus("Num_Total_Delivery", TotalDel.toString());
