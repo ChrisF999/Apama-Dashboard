@@ -585,7 +585,8 @@
 
 "@types/grafana@https://git@github.com/CorpGlory/types-grafana.git":
   version "4.6.3"
-  resolved "https://git@github.com/CorpGlory/types-grafana.git#2ce6e54491a247b9dbfe6b809e43daf2002e8260"
+  uid c58c08dc33585cc234f4d69013616edc05760e21
+  resolved "https://git@github.com/CorpGlory/types-grafana.git#c58c08dc33585cc234f4d69013616edc05760e21"
 
 "@types/jest@^23.3.9":
   version "23.3.9"
